@@ -41,33 +41,36 @@ export const createEndpoint =
                 ResponseCookies
             >;
         }) => {
-            const mapData = (transformers: {
-                inputFromRequest: (
-                    x: SafelyInferOutput<RequestBodySchema> &
-                        SafelyInferOutput<RequestQuerySchema> &
-                        SafelyInferOutput<RequestFormDataSchema> &
-                        SafelyInferOutput<RequestHeadersSchema> &
-                        SafelyInferOutput<RequestCookiesSchema>
-                ) => StandardSchemaV1.InferOutput<InputSchema>;
+            const mapData = (
+                transformers: {
+                    inputFromRequest: (
+                        x: SafelyInferOutput<RequestBodySchema> &
+                            SafelyInferOutput<RequestQuerySchema> &
+                            SafelyInferOutput<RequestFormDataSchema> &
+                            SafelyInferOutput<RequestHeadersSchema> &
+                            SafelyInferOutput<RequestCookiesSchema>
+                    ) => StandardSchemaV1.InferOutput<InputSchema>;
 
-                outputToBody: ResponseBody extends undefined
-                    ? undefined
-                    : (
-                          x: StandardSchemaV1.InferOutput<OutputSchema>
-                      ) => SafelyInferOutput<ResponseBody>;
-
-                outputToCookies: ResponseCookies extends undefined
-                    ? undefined
-                    : (
-                          x: StandardSchemaV1.InferOutput<OutputSchema>
-                      ) => SafelyInferOutput<ResponseCookies>;
-
-                outputToHeaders: ResponseHeaders extends undefined
-                    ? undefined
-                    : (
-                          x: StandardSchemaV1.InferOutput<OutputSchema>
-                      ) => SafelyInferOutput<ResponseHeaders>;
-            }) => {
+                    outputToBody: ResponseBody extends undefined
+                        ? undefined
+                        : (
+                              x: StandardSchemaV1.InferOutput<OutputSchema>
+                          ) => SafelyInferOutput<ResponseBody>;
+                } & (ResponseCookies extends undefined
+                    ? {}
+                    : {
+                          outputToCookies: (
+                              x: StandardSchemaV1.InferOutput<OutputSchema>
+                          ) => SafelyInferOutput<ResponseCookies>;
+                      }) &
+                    (ResponseCookies extends undefined
+                        ? {}
+                        : {
+                              outputToHeaders: (
+                                  x: StandardSchemaV1.InferOutput<OutputSchema>
+                              ) => SafelyInferOutput<ResponseHeaders>;
+                          })
+            ) => {
                 const requestSchemas = payload.request(useCase.inputSchema);
                 const responseSchemas = payload.response?.(
                     useCase.outputSchema
@@ -240,7 +243,8 @@ export const createEndpoint =
                         const getCookiesPart = async () => {
                             if (
                                 'cookies' in responseSchemas &&
-                                responseSchemas.cookies
+                                responseSchemas.cookies &&
+                                'outputToCookies' in transformers
                             ) {
                                 const result = await responseSchemas.cookies[
                                     '~standard'
@@ -261,7 +265,8 @@ export const createEndpoint =
                         const getHeadersPart = async () => {
                             if (
                                 'headers' in responseSchemas &&
-                                responseSchemas.headers
+                                responseSchemas.headers &&
+                                'outputToHeaders' in transformers
                             ) {
                                 const result = await responseSchemas.headers[
                                     '~standard'

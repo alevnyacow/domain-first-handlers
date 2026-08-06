@@ -29,9 +29,7 @@ test('Express adapter', async () => {
         })
         .mapData({
             inputFromRequest: (x) => x,
-            outputToBody: (x) => x,
-            outputToCookies: undefined,
-            outputToHeaders: undefined
+            outputToBody: (x) => x
         });
 
     app.get('/', expressEndpoint);
