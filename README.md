@@ -17,16 +17,16 @@
 # Quick Start
 
 ```ts
-import { defineHandler } from '@domain-first/handlers'
-import z from 'zod'
+import { defineHandler } from "@domain-first/handlers";
+import z from "zod";
 
 const sumPositiveNumbers = defineHandler({
     inputSchema: z.object({
         a: z.number().positive(),
-        b: z.number().positive()
+        b: z.number().positive(),
     }),
     outputSchema: z.number(),
-    handler: ({ a, b }) => a + b
+    handler: ({ a, b }) => a + b,
 });
 
 const main = async () => {
