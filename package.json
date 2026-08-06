@@ -1,6 +1,17 @@
 {
   "name": "@domain-first/handlers",
-  "version": "0.0.1",
+  "description": "Framework-agnostic handlers perfect for domain-first Use Cases, Queries, Commands, etc.",
+  "version": "0.0.2",
+  "license": "MIT",
+  "keywords": [
+    "handler",
+    "use case",
+    "usecase",
+    "use-case",
+    "domain driven",
+    "ddd",
+    "domain driven design"
+  ],
   "type": "module",
   "exports": {
     ".": {
