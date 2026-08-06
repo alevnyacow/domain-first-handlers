@@ -1,5 +1,5 @@
 {
-  "name": "domain-first-handlers",
+  "name": "@domain-first/handlers",
   "version": "0.0.1",
   "type": "module",
   "exports": {
@@ -31,6 +31,10 @@
     "@rstest/adapter-rslib": "^0.10.6",
     "@rstest/core": "^0.10.6",
     "@types/node": "^24.13.2",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "zod": "^4.4.3"
+  },
+  "dependencies": {
+    "@standard-schema/spec": "^1.1.0"
   }
 }
