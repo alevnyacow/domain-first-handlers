@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-    Framework-agnostic handlers perfect for domain-first Use Cases, Queries, Commands, etc.
+    Framework-agnostic application handlers for domain-first architectures.
 </p>
 
 <p align="center">
@@ -15,3 +15,26 @@
 </p>
 
 # Quick Start
+
+```ts
+import { defineHandler } from '@domain-first/handlers'
+
+const sumPositiveNumbers = defineHandler({
+    inputSchema: z.object({
+        a: z.number().positive(),
+        b: z.number().positive()
+    }),
+    outputSchema: z.number(),
+    handler: ({ a, b }) => a + b
+});
+
+const main = async () => {
+    const response = await sumPositiveNumbers({ a: 10, b: 20 });
+    if (response.success) {
+        // 30
+        console.log(response.result);
+    }
+};
+
+main();
+```

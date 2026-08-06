@@ -1,32 +1,11 @@
 import type { StandardSchemaV1 } from '@standard-schema/spec'
 import type { Handler, HandlerOutput } from './types';
 
-/**
- *
- * @param params Parameters used for use-case instantiation.
- * @returns Use-case.
- */
 export const defineHandler = <
     InputSchema extends StandardSchemaV1,
     OutputSchema extends StandardSchemaV1
 >(params: {
-    /**
-     * Zod schema used for input validation.
-     *
-     * @example
-     * z.number()
-     * @example
-     * z.object({ name: z.string() })
-     */
     inputSchema: InputSchema;
-    /**
-     * Zod schema used for output validation.
-     *
-     * @example
-     * z.number()
-     * @example
-     * z.object({ name: z.string() })
-     */
     outputSchema: OutputSchema;
     handler: (
         input: StandardSchemaV1.InferInput<InputSchema>
