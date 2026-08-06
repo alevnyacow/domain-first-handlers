@@ -18,6 +18,7 @@
 
 ```ts
 import { defineHandler } from '@domain-first/handlers'
+import z from 'zod'
 
 const sumPositiveNumbers = defineHandler({
     inputSchema: z.object({
