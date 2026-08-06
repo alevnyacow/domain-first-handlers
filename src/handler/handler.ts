@@ -1,5 +1,5 @@
 import type { StandardSchemaV1 } from '@standard-schema/spec'
-import type { Handler, HandlerOutput } from './types';
+import type { Handler, HandlerOutput } from '../types';
 
 export const defineHandler = <
     InputSchema extends StandardSchemaV1,
