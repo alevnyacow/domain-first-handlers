@@ -14,7 +14,7 @@ export const createEndpoint =
         InputSchema extends StandardSchemaV1,
         OutputSchema extends StandardSchemaV1
     >(
-        useCase: Handler<InputSchema, OutputSchema>
+        handler: Handler<InputSchema, OutputSchema>
     ) => {
         const contract = <
             RequestQuerySchema extends StandardSchemaV1 | undefined,
@@ -71,14 +71,14 @@ export const createEndpoint =
                               ) => SafelyInferOutput<ResponseHeaders>;
                           })
             ) => {
-                const requestSchemas = payload.request(useCase.inputSchema);
+                const requestSchemas = payload.request(handler.inputSchema);
                 const responseSchemas = payload.response?.(
-                    useCase.outputSchema
+                    handler.outputSchema
                 ) ?? {
-                    body: useCase.outputSchema
+                    body: handler.outputSchema
                 };
 
-                const transformedREST = useCase.withTransformation<
+                const transformedREST = handler.withTransformedContract<
                     RESTRequest,
                     RESTResponse
                 >({
@@ -196,10 +196,10 @@ export const createEndpoint =
                             };
                         }
 
-                        const output = await useCase.inputSchema[
+                        const output = await handler.inputSchema[
                             '~standard'
                         ].validate(
-                            transformers.inputFromRequest!(
+                            transformers.inputFromRequest(
                                 result as unknown as any
                             )
                         );

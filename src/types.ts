@@ -13,13 +13,17 @@ export interface Handler<
     ): Promise<HandlerOutput<StandardSchemaV1.InferOutput<OutputSchema>>>;
     inputSchema: InputSchema;
     outputSchema: OutputSchema;
-    withTransformation: <
-        ParsedInput extends unknown[] = [StandardSchemaV1.InferInput<InputSchema>],
+    withTransformedContract: <
+        ParsedInput extends unknown[] = [
+            StandardSchemaV1.InferInput<InputSchema>
+        ],
         ParsedOutput = HandlerOutput<StandardSchemaV1.InferOutput<OutputSchema>>
     >(transformers: {
         input: (
             ...input: ParsedInput
-        ) => StandardSchemaV1.InferOutput<InputSchema> | Promise<StandardSchemaV1.InferOutput<InputSchema>>;
+        ) =>
+            | StandardSchemaV1.InferOutput<InputSchema>
+            | Promise<StandardSchemaV1.InferOutput<InputSchema>>;
         output: (
             output: HandlerOutput<StandardSchemaV1.InferOutput<OutputSchema>>,
             ...input: ParsedInput

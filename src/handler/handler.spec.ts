@@ -29,22 +29,26 @@ test('incorrect data', async () => {
 });
 
 test('transformed', async () => {
-    const a = sumPositiveNumbers.withTransformation<[number, number], string>({
+    const a = sumPositiveNumbers.withTransformedContract<
+        [number, number],
+        string
+    >({
         input: (a, b) => {
             return {
-                a, b
-            }
+                a,
+                b
+            };
         },
         output: (x) => {
             if (x.success) {
-                return x.result.toString()
+                return x.result.toString();
             }
 
-            return 'error'
+            return 'error';
         }
-    })
+    });
 
-    console.log(await a(3, 6))
+    console.log(await a(3, 6));
 
-    expect(true).toBe(true)
-})
+    expect(true).toBe(true);
+});

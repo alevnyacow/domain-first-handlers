@@ -18,14 +18,19 @@
 
 ```ts
 import { defineHandler } from "@domain-first/handlers";
+// any Standard Schema compatible library can be used
 import z from "zod";
 
+const inputSchema = z.object({
+    a: z.number().positive(),
+    b: z.number().positive(),
+});
+
+const outputSchema = z.number();
+
 const sumPositiveNumbers = defineHandler({
-    inputSchema: z.object({
-        a: z.number().positive(),
-        b: z.number().positive(),
-    }),
-    outputSchema: z.number(),
+    inputSchema,
+    outputSchema,
     handler: ({ a, b }) => a + b,
 });
 
@@ -38,4 +43,35 @@ const main = async () => {
 };
 
 main();
+```
+
+# Examples
+
+## `withTransformedContract`
+
+```ts
+import { defineHandler } from "@domain-first/handlers";
+import z from "zod";
+
+const getStringLength = defineHandler({
+    inputSchema: z.string(),
+    outputSchema: z.number(),
+    handler: (x) => x.length,
+});
+
+const getFullNameLength = getStringLength.withTransformedContract<
+    [string, string],
+    number
+>({
+    input: (firstName, secondName) => {
+        return [firstName, secondName].join("");
+    },
+    output: (x) => {
+        if (x.success) {
+            return x.result;
+        }
+
+        throw x.error;
+    },
+});
 ```

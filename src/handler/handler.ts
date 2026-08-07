@@ -1,4 +1,4 @@
-import type { StandardSchemaV1 } from '@standard-schema/spec'
+import type { StandardSchemaV1 } from '@standard-schema/spec';
 import type { Handler, HandlerOutput } from '../types';
 
 export const defineHandler = <
@@ -9,7 +9,9 @@ export const defineHandler = <
     outputSchema: OutputSchema;
     handler: (
         input: StandardSchemaV1.InferInput<InputSchema>
-    ) => Promise<StandardSchemaV1.InferOutput<OutputSchema>> | StandardSchemaV1.InferOutput<OutputSchema>;
+    ) =>
+        | Promise<StandardSchemaV1.InferOutput<OutputSchema>>
+        | StandardSchemaV1.InferOutput<OutputSchema>;
     metadata?: Record<string, string | number | boolean>;
 }): Handler<InputSchema, OutputSchema> => {
     const { handler, inputSchema, outputSchema } = params;
@@ -26,7 +28,8 @@ export const defineHandler = <
                 };
             }
             const rawResult = await handler(parsedInput.value);
-            const parsedResult = await outputSchema['~standard'].validate(rawResult);
+            const parsedResult =
+                await outputSchema['~standard'].validate(rawResult);
             if (parsedResult.issues) {
                 return {
                     success: false,
@@ -42,13 +45,17 @@ export const defineHandler = <
         }
     };
 
-    const withTransformation = <
-        ParsedInput extends unknown[] = [StandardSchemaV1.InferInput<InputSchema>],
+    const withTransformedContract = <
+        ParsedInput extends unknown[] = [
+            StandardSchemaV1.InferInput<InputSchema>
+        ],
         ParsedOutput = HandlerOutput<StandardSchemaV1.InferOutput<OutputSchema>>
     >(transformers: {
         input: (
             ...input: ParsedInput
-        ) => StandardSchemaV1.InferOutput<InputSchema> | Promise<StandardSchemaV1.InferOutput<InputSchema>>;
+        ) =>
+            | StandardSchemaV1.InferOutput<InputSchema>
+            | Promise<StandardSchemaV1.InferOutput<InputSchema>>;
         output: (
             output: HandlerOutput<StandardSchemaV1.InferOutput<OutputSchema>>,
             ...input: ParsedInput
@@ -62,7 +69,7 @@ export const defineHandler = <
     };
 
     return Object.assign(handlerFunction, {
-        withTransformation,
+        withTransformedContract,
         inputSchema,
         outputSchema
     });
