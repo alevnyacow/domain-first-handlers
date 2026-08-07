@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/alevnyacow/domain-first-handlers/compare/v1.1.0...v2.0.0) (2026-08-07)
+
+
+### Bug Fixes
+
+* `withTransformation` -> `withTransformedContract` ([01b1505](https://github.com/alevnyacow/domain-first-handlers/commit/01b15053a7a4a678d85517ecebe37d9fc5bdee4e))
+
+
+### BREAKING CHANGES
+
+* new contract
+
 # [1.1.0](https://github.com/alevnyacow/domain-first-handlers/compare/v1.0.0...v1.1.0) (2026-08-07)
 
 
