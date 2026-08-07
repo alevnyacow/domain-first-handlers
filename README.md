@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-    Framework-agnostic application handlers for domain-first architectures.
+    Framework-agnostic application handlers.
 </p>
 
 <p align="center">

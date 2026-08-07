@@ -1,62 +1,62 @@
 {
-  "name": "@domain-first/handlers",
-  "description": "Framework-agnostic application handlers for domain-first architectures",
-  "version": "1.0.0",
-  "license": "MIT",
-  "keywords": [
-    "handler",
-    "use case",
-    "usecase",
-    "use-case",
-    "domain driven",
-    "ddd",
-    "domain driven design"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/alevnyacow/domain-first-handlers.git"
-  },
-  "type": "module",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+    "name": "@domain-first/handlers",
+    "description": "Framework-agnostic application handlers",
+    "version": "1.0.0",
+    "license": "MIT",
+    "keywords": [
+        "handler",
+        "use case",
+        "usecase",
+        "use-case",
+        "domain driven",
+        "ddd",
+        "domain driven design"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/alevnyacow/domain-first-handlers.git"
+    },
+    "type": "module",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js",
+            "require": "./dist/index.cjs"
+        }
+    },
+    "main": "./dist/index.cjs",
+    "types": "./dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "build": "rslib",
+        "check": "biome check --write",
+        "dev": "rslib --watch",
+        "format": "biome format --write",
+        "test": "rstest",
+        "test:watch": "rstest --watch"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "2.4.15",
+        "@rslib/core": "^0.23.2",
+        "@rstest/adapter-rslib": "^0.10.6",
+        "@rstest/core": "^0.10.6",
+        "@semantic-release/changelog": "^6.0.3",
+        "@semantic-release/git": "^10.0.1",
+        "@semantic-release/npm": "^13.1.5",
+        "@types/express": "^5.0.6",
+        "@types/node": "^24.13.2",
+        "express": "^5.2.1",
+        "next": "^16.3.0",
+        "semantic-release": "^25.0.9",
+        "typescript": "^6.0.3",
+        "zod": "^4.4.3"
+    },
+    "dependencies": {
+        "@standard-schema/spec": "^1.1.0"
     }
-  },
-  "main": "./dist/index.cjs",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
-  "scripts": {
-    "build": "rslib",
-    "check": "biome check --write",
-    "dev": "rslib --watch",
-    "format": "biome format --write",
-    "test": "rstest",
-    "test:watch": "rstest --watch"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "2.4.15",
-    "@rslib/core": "^0.23.2",
-    "@rstest/adapter-rslib": "^0.10.6",
-    "@rstest/core": "^0.10.6",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
-    "@semantic-release/npm": "^13.1.5",
-    "@types/express": "^5.0.6",
-    "@types/node": "^24.13.2",
-    "express": "^5.2.1",
-    "next": "^16.3.0",
-    "semantic-release": "^25.0.9",
-    "typescript": "^6.0.3",
-    "zod": "^4.4.3"
-  },
-  "dependencies": {
-    "@standard-schema/spec": "^1.1.0"
-  }
 }
