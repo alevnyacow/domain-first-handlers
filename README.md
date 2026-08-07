@@ -14,7 +14,15 @@
   <img src="https://img.shields.io/npm/l/%40domain-first%2Fhandlers" alt="license">
 </p>
 
+# Motivation
+
+Business logic shouldn't depend on HTTP, Express, Next.js, or any other transport.
+
+This library lets you define your use cases once as **handlers** with validated input and output, then reuse them anywhere: call them directly from your application, expose them as REST endpoints, or plug them into other transports without rewriting the business logic.
+
 # Quick Start
+
+## Defining a handler
 
 ```ts
 import { defineHandler } from "@domain-first/handlers";
@@ -22,56 +30,79 @@ import { defineHandler } from "@domain-first/handlers";
 import z from "zod";
 
 const inputSchema = z.object({
-    a: z.number().positive(),
-    b: z.number().positive(),
+    firstName: z.string(),
+    lastName: z.string(),
 });
 
-const outputSchema = z.number();
+const outputSchema = z.string();
 
-const sumPositiveNumbers = defineHandler({
+const getFullName = defineHandler({
     inputSchema,
     outputSchema,
-    handler: ({ a, b }) => a + b,
+    handler: ({ firstName, lastName }) => `${firstName} ${lastName}`,
 });
-
-const main = async () => {
-    const response = await sumPositiveNumbers({ a: 10, b: 20 });
-    if (response.success) {
-        // 30
-        console.log(response.result);
-    }
-};
-
-main();
 ```
 
-# Examples
-
-## `withTransformedContract`
+## Using it as a function
 
 ```ts
-import { defineHandler } from "@domain-first/handlers";
-import z from "zod";
+// type of `fullName` is
+// | { success: false, error: Error }
+// | { success: true, result: string }
+const fullName = await getFullName({ firstName: "John", lastName: "Doe" });
 
-const getStringLength = defineHandler({
-    inputSchema: z.string(),
-    outputSchema: z.number(),
-    handler: (x) => x.length,
-});
+if (!fullName.success) {
+    // type of `fullName` is { success: false, error: Error }
+    throw fullName.error;
+}
 
-const getFullNameLength = getStringLength.withTransformedContract<
-    [string, string],
-    number
->({
-    input: (firstName, secondName) => {
-        return [firstName, secondName].join("");
-    },
-    output: (x) => {
-        if (x.success) {
-            return x.result;
-        }
+// type of `fullName` is { success: true, result: string }
+console.log(fullName.result); // John Doe
+```
 
-        throw x.error;
-    },
-});
+## Using handlers as REST endpoints (Express usage)
+
+```ts
+import express from "express";
+import { createEndpoint } from "@domain-first/handlers";
+import adapter from "@domain-first/handlers/express-adapter";
+
+const createExpressEndpoint = createEndpoint(adapter);
+
+const fullName_GET = createExpressEndpoint(getFullName)
+    // define contract of an endpoint based on handler contracts
+    .withContract({
+        request: (
+            // handler input schema
+            inputSchema,
+        ) => ({
+            // all data will be received as query parameters
+            query: inputSchema,
+        }),
+        response: (
+            // handler output schema
+            outputSchema,
+        ) => ({
+            // full handler response will be sent in response body,
+            // let's modify it a bit for an example purpose
+            body: z.object({ fullName: outputSchema }),
+        }),
+    })
+    // describe how endpoint data and handler data map into each other
+    .withDataMapping({
+        // how to get handler input from endpoint request
+        inputFromRequest: (x) => x,
+        // how to get handler response body from handler output
+        outputToBody: (x) => ({ fullName: x }),
+    });
+
+const app = express();
+app.get("/full-name", fullName_GET);
+app.listen(3000);
+
+/**
+ * GET localhost:3000/full-name?firstName=John&lastName=Doe
+ *
+ * Response: { fullName: "John Doe" }
+ */
 ```

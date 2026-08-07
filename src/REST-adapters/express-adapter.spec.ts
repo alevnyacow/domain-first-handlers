@@ -2,7 +2,10 @@ import { expect, test } from '@rstest/core';
 import express from 'express';
 import z from 'zod';
 import { defineHandler } from '../../src';
-import { createExpressEndpoint } from './express-adapter';
+import { createEndpoint } from '../REST';
+import expressAdapter from './express-adapter';
+
+const createExpressEndpoint = createEndpoint(expressAdapter);
 
 const countWordsUseCase = defineHandler({
     inputSchema: z.object({ word: z.string() }),
@@ -19,7 +22,7 @@ test('Express adapter', async () => {
     const app = express();
 
     const expressEndpoint = createExpressEndpoint(countWordsUseCase)
-        .contract({
+        .withContract({
             request: (inputSchema) => ({
                 query: inputSchema
             }),
@@ -27,7 +30,7 @@ test('Express adapter', async () => {
                 body: outputSchema
             })
         })
-        .mapData({
+        .withDataMapping({
             inputFromRequest: (x) => x,
             outputToBody: (x) => x
         });

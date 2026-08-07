@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers';
 import type { NextRequest, NextResponse } from 'next/server';
-import { type AdapterTypes, createEndpoint } from '../REST';
+import type { AdapterTypes } from '../REST';
 
 /**
  * Plain `jsonResponse` working without NextResponse extension.
@@ -60,4 +60,4 @@ const nextAdapter: AdapterTypes.RESTAdapter<
     }
 };
 
-export const createNextEndpoint = createEndpoint(nextAdapter);
+export default nextAdapter;

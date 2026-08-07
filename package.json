@@ -22,6 +22,16 @@
             "types": "./dist/index.d.ts",
             "import": "./dist/index.js",
             "require": "./dist/index.cjs"
+        },
+        "./next-adapter": {
+            "types": "./dist/REST-adapters/next-adapter.d.ts",
+            "import": "./dist/next.js",
+            "require": "./dist/next.cjs"
+        },
+        "./express-adapter": {
+            "types": "./dist/REST-adapters/express-adapter.d.ts",
+            "import": "./dist/express.js",
+            "require": "./dist/express.cjs"
         }
     },
     "main": "./dist/index.cjs",

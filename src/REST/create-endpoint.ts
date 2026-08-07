@@ -16,7 +16,7 @@ export const createEndpoint =
     >(
         handler: Handler<InputSchema, OutputSchema>
     ) => {
-        const contract = <
+        const withContract = <
             RequestQuerySchema extends StandardSchemaV1 | undefined,
             RequestBodySchema extends StandardSchemaV1 | undefined,
             RequestFormDataSchema extends StandardSchemaV1 | undefined,
@@ -41,7 +41,7 @@ export const createEndpoint =
                 ResponseCookies
             >;
         }) => {
-            const mapData = (
+            const withDataMapping = (
                 transformers: {
                     inputFromRequest: (
                         x: SafelyInferOutput<RequestBodySchema> &
@@ -304,8 +304,8 @@ export const createEndpoint =
                 });
             };
 
-            return { mapData };
+            return { withDataMapping };
         };
 
-        return { contract };
+        return { withContract };
     };

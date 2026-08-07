@@ -1,5 +1,5 @@
 import type { Request, Response } from 'express';
-import { type AdapterTypes, createEndpoint } from '../REST';
+import type { AdapterTypes } from '../REST';
 
 const expressAdapter: AdapterTypes.RESTAdapter<
     [req: Request, res: Response],
@@ -34,4 +34,5 @@ const expressAdapter: AdapterTypes.RESTAdapter<
     }
 };
 
-export const createExpressEndpoint = createEndpoint(expressAdapter);
+export default expressAdapter;
+export { expressAdapter };
