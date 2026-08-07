@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/alevnyacow/domain-first-handlers/compare/v2.0.0...v2.1.0) (2026-08-07)
+
+
+### Features
+
+* adapters, README ([81e3e42](https://github.com/alevnyacow/domain-first-handlers/commit/81e3e42af530cd3eb818a1012c6c20d31378d37c))
+
 # [2.0.0](https://github.com/alevnyacow/domain-first-handlers/compare/v1.1.0...v2.0.0) (2026-08-07)
 
 
