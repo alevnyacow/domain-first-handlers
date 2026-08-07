@@ -46,18 +46,18 @@ const getFullName = defineHandler({
 ## Using it as a function
 
 ```ts
-// type of `fullName` is
+// type of `name` is
 // | { success: false, error: Error }
 // | { success: true, result: string }
-const fullName = await getFullName({ firstName: "John", lastName: "Doe" });
+const name = await getFullName({ firstName: "John", lastName: "Doe" });
 
-if (!fullName.success) {
-    // type of `fullName` is { success: false, error: Error }
-    throw fullName.error;
+if (!name.success) {
+    // type of `name` is { success: false, error: Error }
+    throw name.error;
 }
 
-// type of `fullName` is { success: true, result: string }
-console.log(fullName.result); // John Doe
+// type of `name` is { success: true, result: string }
+console.log(name.result); // John Doe
 ```
 
 ## Using handlers as REST endpoints (Express usage)
