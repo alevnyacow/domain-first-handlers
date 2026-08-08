@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/alevnyacow/domain-first-handlers/compare/v2.1.1...v2.2.0) (2026-08-08)
+
+
+### Features
+
+* `unsafe`, restructured readme ([6c557f8](https://github.com/alevnyacow/domain-first-handlers/commit/6c557f86b98df5887864167bad7a8cfbfd59b0c8))
+
 ## [2.1.1](https://github.com/alevnyacow/domain-first-handlers/compare/v2.1.0...v2.1.1) (2026-08-07)
 
 
