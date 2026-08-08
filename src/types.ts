@@ -11,6 +11,9 @@ export interface Handler<
     (
         input: StandardSchemaV1.InferInput<InputSchema>
     ): Promise<HandlerOutput<StandardSchemaV1.InferOutput<OutputSchema>>>;
+    unsafe: (
+        input: StandardSchemaV1.InferInput<InputSchema>
+    ) => Promise<StandardSchemaV1.InferOutput<OutputSchema>>;
     inputSchema: InputSchema;
     outputSchema: OutputSchema;
     withTransformedContract: <

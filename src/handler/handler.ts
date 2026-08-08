@@ -68,9 +68,18 @@ export const defineHandler = <
         };
     };
 
+    const unsafe = async (input: StandardSchemaV1.InferInput<InputSchema>) => {
+        const result = await handlerFunction(input);
+        if (result.success) {
+            return result.result;
+        }
+        throw result.error;
+    };
+
     return Object.assign(handlerFunction, {
         withTransformedContract,
         inputSchema,
-        outputSchema
+        outputSchema,
+        unsafe
     });
 };

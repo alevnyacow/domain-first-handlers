@@ -17,6 +17,8 @@ test('happy path', async () => {
     if (response.success) {
         expect(response.result).toBe(30);
     }
+    const result = await sumPositiveNumbers.unsafe({ a: 10, b: 20 });
+    expect(result).toBe(30);
 });
 
 test('incorrect data', async () => {

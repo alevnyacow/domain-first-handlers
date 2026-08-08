@@ -29,26 +29,40 @@ import { defineHandler } from "@domain-first/handlers";
 // any Standard Schema compatible library can be used
 import z from "zod";
 
-const inputSchema = z.object({
-    firstName: z.string(),
-    lastName: z.string(),
-});
-
-const outputSchema = z.string();
-
 const getFullName = defineHandler({
-    inputSchema,
-    outputSchema,
-    handler: ({ firstName, lastName }) => `${firstName} ${lastName}`,
+    inputSchema: z.object({
+        firstName: z.string(),
+        lastName: z.string(),
+    }),
+    outputSchema: z.object({ fullName: z.string() }),
+    handler: async ({ firstName, lastName }) => {
+        return { fullName: `${firstName} ${lastName}` };
+    },
 });
 ```
 
 ## Using it as a function
 
+### Unsafe (can throw an Error)
+
+```ts
+try {
+    const name = await getFullName.unsafe({
+        firstName: "John",
+        lastName: "Doe",
+    });
+    console.log(name); // { fullName: "John Doe" }
+} catch (e: unknown) {
+    console.log(e);
+}
+```
+
+### Safe (returns a Result instead of throwing)
+
 ```ts
 // type of `name` is
 // | { success: false, error: Error }
-// | { success: true, result: string }
+// | { success: true, result: { fullName: string } }
 const name = await getFullName({ firstName: "John", lastName: "Doe" });
 
 if (!name.success) {
@@ -56,44 +70,55 @@ if (!name.success) {
     throw name.error;
 }
 
-// type of `name` is { success: true, result: string }
-console.log(name.result); // John Doe
+// type of `name` is { success: true, result: { fullName: string } }
+console.log(name.result); // { fullName: 'John Doe' }
 ```
 
-## Using handlers as REST endpoints (Express usage)
+## Using handlers as REST endpoints
+
+To use handler as a REST endpoint, you need an adapter for your selected technology. `@domain-first/handlers` comes with adapters for `express` and `Next.js`:
+
+```ts
+import expressAdapter from `@domain-first/handlers/express-adapter`
+import nextAdapter from `@domain-first/handlers/next-adapter`
+```
+
+You can also write your own adapters. Import the adapter type and implement the required interface:
+
+```ts
+import { type AdapterTypes } from "@domain-first/handlers";
+
+type Request = {};
+type Response = {};
+
+const adapter: AdapterTypes.RESTAdapter<[Request], Response> = {
+    // implementation
+};
+```
+
+To make a REST endpoint from a handler, import `createEndpoint`, and pass adapter as a parameter.
 
 ```ts
 import express from "express";
 import { createEndpoint } from "@domain-first/handlers";
 import adapter from "@domain-first/handlers/express-adapter";
 
-const createExpressEndpoint = createEndpoint(adapter);
+const expressEndpoint = createEndpoint(adapter);
 
-const fullName_GET = createExpressEndpoint(getFullName)
+const fullName_GET = expressEndpoint(getFullName)
     // define contract of an endpoint based on handler contracts
     .withContract({
-        request: (
-            // handler input schema
-            inputSchema,
-        ) => ({
-            // all data will be received as query parameters
-            query: inputSchema,
-        }),
-        response: (
-            // handler output schema
-            outputSchema,
-        ) => ({
-            // full handler response will be sent in response body,
-            // let's modify it a bit for an example purpose
-            body: z.object({ fullName: outputSchema }),
-        }),
+        // all data will be received as query parameters
+        request: (inputSchema) => ({ query: inputSchema }),
+        // full handler response will be sent in response body,
+        response: (outputSchema) => ({ body: outputSchema }),
     })
     // describe how endpoint data and handler data map into each other
     .withDataMapping({
         // how to get handler input from endpoint request
         inputFromRequest: (x) => x,
         // how to get handler response body from handler output
-        outputToBody: (x) => ({ fullName: x }),
+        outputToBody: (x) => x,
     });
 
 const app = express();
