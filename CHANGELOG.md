@@ -1,3 +1,10 @@
+## [3.0.3](https://github.com/alevnyacow/domain-first-handlers/compare/v3.0.2...v3.0.3) (2026-08-09)
+
+
+### Bug Fixes
+
+* added coverage and thresholds ([4123b19](https://github.com/alevnyacow/domain-first-handlers/commit/4123b19348272300a86395322567232c6a64dd24))
+
 ## [3.0.2](https://github.com/alevnyacow/domain-first-handlers/compare/v3.0.1...v3.0.2) (2026-08-09)
 
 
