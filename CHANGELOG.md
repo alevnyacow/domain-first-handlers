@@ -1,3 +1,10 @@
+## [3.0.4](https://github.com/alevnyacow/domain-first-handlers/compare/v3.0.3...v3.0.4) (2026-08-09)
+
+
+### Bug Fixes
+
+* added `Test Coverage` section in README ([d48b22b](https://github.com/alevnyacow/domain-first-handlers/commit/d48b22bcb53a143c44cb8f530fe8e5404432dbb8))
+
 ## [3.0.3](https://github.com/alevnyacow/domain-first-handlers/compare/v3.0.2...v3.0.3) (2026-08-09)
 
 
