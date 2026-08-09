@@ -1,3 +1,10 @@
+# [2.4.0](https://github.com/alevnyacow/domain-first-handlers/compare/v2.3.1...v2.4.0) (2026-08-09)
+
+
+### Features
+
+* added `OutputParsingError` ([7154ebc](https://github.com/alevnyacow/domain-first-handlers/commit/7154ebcd33dbd75b716a05015c1c09e3ff17cd9a))
+
 ## [2.3.1](https://github.com/alevnyacow/domain-first-handlers/compare/v2.3.0...v2.3.1) (2026-08-09)
 
 
