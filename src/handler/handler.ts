@@ -1,4 +1,5 @@
 import type { StandardSchemaV1 } from '@standard-schema/spec';
+import { InputParsingError } from '../errors';
 import type { Handler, HandlerOutput } from '../types';
 
 export const defineHandler = <
@@ -24,7 +25,10 @@ export const defineHandler = <
             if (parsedInput.issues) {
                 return {
                     success: false,
-                    error: new Error()
+                    error: new InputParsingError({
+                        issues: parsedInput.issues,
+                        value: input
+                    })
                 };
             }
             const rawResult = await handler(parsedInput.value);
