@@ -1,3 +1,10 @@
+## [2.3.1](https://github.com/alevnyacow/domain-first-handlers/compare/v2.3.0...v2.3.1) (2026-08-09)
+
+
+### Bug Fixes
+
+* exported errors ([1ee43d4](https://github.com/alevnyacow/domain-first-handlers/commit/1ee43d4b05a9dea0c87131b8c21681ce5d9d880c))
+
 # [2.3.0](https://github.com/alevnyacow/domain-first-handlers/compare/v2.2.0...v2.3.0) (2026-08-09)
 
 
