@@ -95,7 +95,7 @@ describe('sum positive numbers', () => {
             ])('throws an input parsing error for $parameters', async ({
                 parameters
             }) => {
-                expect(() =>
+                await expect(() =>
                     transformedHandler(parameters[0], parameters[1])
                 ).rejects.toThrowError(InputParsingError);
             });
