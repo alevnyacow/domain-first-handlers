@@ -1,3 +1,10 @@
+## [3.0.5](https://github.com/alevnyacow/domain-first-handlers/compare/v3.0.4...v3.0.5) (2026-08-09)
+
+
+### Bug Fixes
+
+* correct coverage calculation, simplified `README` ([27f8ea2](https://github.com/alevnyacow/domain-first-handlers/commit/27f8ea27bd0867584c378934617fb72b36bb40e6))
+
 ## [3.0.4](https://github.com/alevnyacow/domain-first-handlers/compare/v3.0.3...v3.0.4) (2026-08-09)
 
 
