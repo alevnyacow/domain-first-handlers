@@ -135,22 +135,11 @@ app.listen(3000);
 
 # Test coverage
 
-## Coverage
+Will be improved in upcoming versions.
 
 | Type       | Threshold | Current value |
 | ---------- | --------- | ------------- |
-| Statements | 55 %      | 57.14 %       |
-| Branches   | 55 %      | 57.14 %       |
-| Functions  | 90 %      | 92.85 %       |
-| Lines      | 55 %      | 56.7 %        |
-
-## Covered files
-
-- `src/handler/handler.ts`
-- `src/REST/create-endpoint.ts`
-
-## Upcoming plans
-
-- Improve current coverage
-- Improve threshold
-- Add tests for adapters code and include them in coverage report
+| Statements | 55 %      | 55.26 %       |
+| Branches   | 40 %      | 40.78 %       |
+| Functions  | 75 %      | 75 %          |
+| Lines      | 50 %      | 54.86 %       |

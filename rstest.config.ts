@@ -6,15 +6,14 @@ export default defineConfig({
     reporters: 'verbose',
     coverage: {
         enabled: true,
-        include: [
-            'src/handler/handler.ts',
-            'src/REST/create-endpoint.ts',
+        exclude: [
+            '**/index.ts',
         ],
         thresholds: {
-            functions: 90,
+            functions: 75,
             statements: 55,
             branches: 40,
-            lines: 55
+            lines: 50
         }
     }
 });
