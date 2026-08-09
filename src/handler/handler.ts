@@ -27,7 +27,8 @@ export const defineHandler = <
                     success: false,
                     error: new InputParsingError({
                         issues: parsedInput.issues,
-                        value: input
+                        value: input,
+                        handlerMetadata: params.metadata ?? {}
                     })
                 };
             }
@@ -39,7 +40,8 @@ export const defineHandler = <
                     success: false,
                     error: new OutputParsingError({
                         issues: parsedResult.issues,
-                        value: rawResult
+                        value: rawResult,
+                        handlerMetadata: params.metadata ?? {}
                     })
                 };
             }
