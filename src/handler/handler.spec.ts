@@ -8,7 +8,7 @@ const sumPositiveNumbers = defineHandler({
         b: z.number().positive()
     }),
     outputSchema: z.number(),
-    handler: ({ a, b }) => a + b
+    handler: async ({ a, b }) => a + b
 });
 
 test('happy path', async () => {

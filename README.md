@@ -36,7 +36,8 @@ const getFullName = defineHandler({
     }),
     outputSchema: z.object({ fullName: z.string() }),
     handler: async ({ firstName, lastName }) => {
-        return { fullName: `${firstName} ${lastName}` };
+        const fullName = `${firstName} ${lastName}`;
+        return { fullName };
     },
 });
 ```

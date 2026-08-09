@@ -1,5 +1,9 @@
 import type { StandardSchemaV1 } from '@standard-schema/spec';
-import { InputParsingError, OutputParsingError } from '../errors';
+import {
+    InputParsingError,
+    NonErrorException,
+    OutputParsingError
+} from '../errors';
 import type { Handler, HandlerOutput } from '../types';
 
 export const defineHandler = <
@@ -10,15 +14,13 @@ export const defineHandler = <
     outputSchema: OutputSchema;
     handler: (
         input: StandardSchemaV1.InferInput<InputSchema>
-    ) =>
-        | Promise<StandardSchemaV1.InferOutput<OutputSchema>>
-        | StandardSchemaV1.InferOutput<OutputSchema>;
+    ) => Promise<StandardSchemaV1.InferInput<OutputSchema>>;
     metadata?: Record<string, string | number | boolean>;
 }): Handler<InputSchema, OutputSchema> => {
     const { handler, inputSchema, outputSchema } = params;
 
     const handlerFunction = async (
-        input: StandardSchemaV1.InferInput<InputSchema>
+        input: StandardSchemaV1.InferOutput<InputSchema>
     ): Promise<HandlerOutput<StandardSchemaV1.InferOutput<OutputSchema>>> => {
         try {
             const parsedInput = await inputSchema['~standard'].validate(input);
@@ -47,9 +49,20 @@ export const defineHandler = <
             }
             return { success: true, result: parsedResult.value };
         } catch (e: unknown) {
+            const isError = e instanceof Error;
+            if (isError) {
+                return {
+                    success: false,
+                    error: e
+                };
+            }
+
             return {
                 success: false,
-                error: e instanceof Error ? e : new Error(JSON.stringify(e))
+                error: new NonErrorException({
+                    data: e,
+                    handlerMetadata: params.metadata ?? {}
+                })
             };
         }
     };
