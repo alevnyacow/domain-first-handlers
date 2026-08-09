@@ -1,3 +1,10 @@
+## [3.0.2](https://github.com/alevnyacow/domain-first-handlers/compare/v3.0.1...v3.0.2) (2026-08-09)
+
+
+### Bug Fixes
+
+* awaiting `expect(...).rejects` in tests ([18096b5](https://github.com/alevnyacow/domain-first-handlers/commit/18096b509b06f634b8e9365f393f5e8b9881fdda))
+
 ## [3.0.1](https://github.com/alevnyacow/domain-first-handlers/compare/v3.0.0...v3.0.1) (2026-08-09)
 
 
