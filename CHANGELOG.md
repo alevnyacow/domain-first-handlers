@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/alevnyacow/domain-first-handlers/compare/v2.2.0...v2.3.0) (2026-08-09)
+
+
+### Features
+
+* added errors, added `InputParsingError` ([e2d2663](https://github.com/alevnyacow/domain-first-handlers/commit/e2d26636d331e88e22e8b055cca65dd7e9fea025))
+
 # [2.2.0](https://github.com/alevnyacow/domain-first-handlers/compare/v2.1.1...v2.2.0) (2026-08-08)
 
 
