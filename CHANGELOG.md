@@ -1,3 +1,15 @@
+# [3.0.0](https://github.com/alevnyacow/domain-first-handlers/compare/v2.4.1...v3.0.0) (2026-08-09)
+
+
+### Features
+
+* unified `handler` contract, fixed return contract of handler ([758ecd7](https://github.com/alevnyacow/domain-first-handlers/commit/758ecd76c17bd28d5220489527fef54e78bd9d21))
+
+
+### BREAKING CHANGES
+
+* new handler contract, and only async function are supported
+
 ## [2.4.1](https://github.com/alevnyacow/domain-first-handlers/compare/v2.4.0...v2.4.1) (2026-08-09)
 
 
