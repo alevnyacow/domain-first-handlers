@@ -1,3 +1,10 @@
+## [2.4.1](https://github.com/alevnyacow/domain-first-handlers/compare/v2.4.0...v2.4.1) (2026-08-09)
+
+
+### Bug Fixes
+
+* passing `handlerMetadata` in errors ([be3366b](https://github.com/alevnyacow/domain-first-handlers/commit/be3366b1a483b63f5e5c74d479c3ee1f14b83c64))
+
 # [2.4.0](https://github.com/alevnyacow/domain-first-handlers/compare/v2.3.1...v2.4.0) (2026-08-09)
 
 
