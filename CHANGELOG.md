@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/alevnyacow/domain-first-handlers/compare/v3.0.0...v3.0.1) (2026-08-09)
+
+
+### Bug Fixes
+
+* verbose test runner, actual tests for handler specification ([cf4ba80](https://github.com/alevnyacow/domain-first-handlers/commit/cf4ba8036f372a96333715dcf00d5bc6fe9d1116))
+
 # [3.0.0](https://github.com/alevnyacow/domain-first-handlers/compare/v2.4.1...v3.0.0) (2026-08-09)
 
 
