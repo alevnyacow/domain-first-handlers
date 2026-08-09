@@ -7,3 +7,8 @@ export const InputParsingError = Errors.define<{
     issues: readonly StandardSchemaV1.Issue[];
     value: unknown;
 }>('INPUT_PARSING');
+
+export const OutputParsingError = Errors.define<{
+    issues: readonly StandardSchemaV1.Issue[];
+    value: unknown;
+}>('OUTPUT_PARSING');

@@ -1,5 +1,5 @@
 import type { StandardSchemaV1 } from '@standard-schema/spec';
-import { InputParsingError } from '../errors';
+import { InputParsingError, OutputParsingError } from '../errors';
 import type { Handler, HandlerOutput } from '../types';
 
 export const defineHandler = <
@@ -37,7 +37,10 @@ export const defineHandler = <
             if (parsedResult.issues) {
                 return {
                     success: false,
-                    error: new Error()
+                    error: new OutputParsingError({
+                        issues: parsedResult.issues,
+                        value: rawResult
+                    })
                 };
             }
             return { success: true, result: parsedResult.value };
