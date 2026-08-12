@@ -81,7 +81,7 @@ Will be improved in upcoming versions.
 
 | Type       | Threshold | Current value |
 | ---------- | --------- | ------------- |
-| Statements | 55 %      | 55.26 %       |
-| Branches   | 40 %      | 40.78 %       |
-| Functions  | 75 %      | 75 %          |
-| Lines      | 50 %      | 54.86 %       |
+| Statements | 55 %      | 67.85 %       |
+| Branches   | 35 %      | 35.71 %       |
+| Functions  | 80 %      | 80 %          |
+| Lines      | 65 %      | 66.66 %       |
