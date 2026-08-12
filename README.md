@@ -75,64 +75,6 @@ if (!name.success) {
 console.log(name.result); // { fullName: 'John Doe' }
 ```
 
-## Using handlers as REST endpoints
-
-To use handler as a REST endpoint, you need an adapter for your selected technology. `@domain-first/handlers` comes with adapters for `express` and `Next.js`:
-
-```ts
-import expressAdapter from `@domain-first/handlers/express-adapter`
-import nextAdapter from `@domain-first/handlers/next-adapter`
-```
-
-You can also write your own adapters. Import the adapter type and implement the required interface:
-
-```ts
-import { type AdapterTypes } from "@domain-first/handlers";
-
-type Request = {};
-type Response = {};
-
-const adapter: AdapterTypes.RESTAdapter<[Request], Response> = {
-    // implementation
-};
-```
-
-To make a REST endpoint from a handler, import `createEndpoint`, and pass adapter as a parameter.
-
-```ts
-import express from "express";
-import { createEndpoint } from "@domain-first/handlers";
-import adapter from "@domain-first/handlers/express-adapter";
-
-const expressEndpoint = createEndpoint(adapter);
-
-const fullName_GET = expressEndpoint(getFullName)
-    // define contract of an endpoint based on handler contracts
-    .withContract({
-        // all data will be received as query parameters
-        request: (inputSchema) => ({ query: inputSchema }),
-        // full handler response will be sent in response body,
-        response: (outputSchema) => ({ body: outputSchema }),
-    })
-    // describe how endpoint data and handler data map into each other
-    .withDataMapping({
-        // how to get handler input from endpoint request
-        inputFromRequest: (x) => x,
-        // how to get handler response body from handler output
-        outputToBody: (x) => x,
-    });
-
-const app = express();
-app.get("/full-name", fullName_GET);
-app.listen(3000);
-
-/**
- * GET localhost:3000/full-name?firstName=John&lastName=Doe
- *
- * Response: { fullName: "John Doe" }
- */
-```
-
 # Test coverage
 
 Will be improved in upcoming versions.
