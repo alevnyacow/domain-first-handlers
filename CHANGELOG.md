@@ -1,3 +1,10 @@
+## [3.0.6](https://github.com/alevnyacow/domain-first-handlers/compare/v3.0.5...v3.0.6) (2026-08-12)
+
+
+### Bug Fixes
+
+* removed REST section from README ([5e164c8](https://github.com/alevnyacow/domain-first-handlers/commit/5e164c8ff531ecc44a6906e2c2959c8ed0aadc5f))
+
 ## [3.0.5](https://github.com/alevnyacow/domain-first-handlers/compare/v3.0.4...v3.0.5) (2026-08-09)
 
 
