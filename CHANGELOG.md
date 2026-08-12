@@ -1,3 +1,15 @@
+# [4.0.0](https://github.com/alevnyacow/domain-first-handlers/compare/v3.0.6...v4.0.0) (2026-08-12)
+
+
+### Features
+
+* exported all types ([b8f9606](https://github.com/alevnyacow/domain-first-handlers/commit/b8f9606320161cfb6d63a26e70d0c491dea1ca4e))
+
+
+### BREAKING CHANGES
+
+* removed `REST` module
+
 ## [3.0.6](https://github.com/alevnyacow/domain-first-handlers/compare/v3.0.5...v3.0.6) (2026-08-12)
 
 
