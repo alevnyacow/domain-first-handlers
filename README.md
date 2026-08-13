@@ -64,7 +64,10 @@ try {
 // type of `name` is
 // | { success: false, error: Error }
 // | { success: true, result: { fullName: string } }
-const name = await getFullName({ firstName: "John", lastName: "Doe" });
+const name = await getFullName({
+    firstName: "John",
+    lastName: "Doe",
+});
 
 if (!name.success) {
     // type of `name` is { success: false, error: Error }
@@ -75,13 +78,6 @@ if (!name.success) {
 console.log(name.result); // { fullName: 'John Doe' }
 ```
 
-# Test coverage
+# Usage with REST
 
-Will be improved in upcoming versions.
-
-| Type       | Threshold | Current value |
-| ---------- | --------- | ------------- |
-| Statements | 55 %      | 67.85 %       |
-| Branches   | 35 %      | 35.71 %       |
-| Functions  | 80 %      | 80 %          |
-| Lines      | 65 %      | 66.66 %       |
+Use [@domain-first/handlers-rest](https://www.npmjs.com/package/@domain-first/handlers-rest) package.
