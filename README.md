@@ -78,6 +78,33 @@ if (!name.success) {
 console.log(name.result); // { fullName: 'John Doe' }
 ```
 
+## Transformed handler
+
+```ts
+type User = { name: string; lastName: string };
+
+const getUserFullName = getFullName.withTransformedContract<
+    // transformed handler input parameters
+    [User],
+    // transformed handler output
+    string
+>({
+    input: (user) => {
+        return { firstName: user.name, lastName: user.lastName };
+    },
+    output: (response) => {
+        if (response.success) {
+            return response.result.fullName;
+        }
+        throw response.error;
+    },
+});
+
+const johnDoe: User = { name: "John", lastName: "Doe" };
+// "John Doe"
+const userFullName = await getUserFullName(johnDoe);
+```
+
 # Usage with REST
 
 Use [@domain-first/handlers-rest](https://www.npmjs.com/package/@domain-first/handlers-rest) package.
