@@ -1,3 +1,10 @@
+## [4.0.3](https://github.com/alevnyacow/domain-first-handlers/compare/v4.0.2...v4.0.3) (2026-08-14)
+
+
+### Bug Fixes
+
+* header naming ([cbc9fbf](https://github.com/alevnyacow/domain-first-handlers/commit/cbc9fbf30ce2b65fe74bd8a549cfb31f6b8dade0))
+
 ## [4.0.2](https://github.com/alevnyacow/domain-first-handlers/compare/v4.0.1...v4.0.2) (2026-08-14)
 
 
