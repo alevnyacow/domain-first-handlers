@@ -78,7 +78,7 @@ if (!name.success) {
 console.log(name.result); // { fullName: 'John Doe' }
 ```
 
-## Transformed handler
+## Using it as a function with another contract
 
 ```ts
 type User = { name: string; lastName: string };
