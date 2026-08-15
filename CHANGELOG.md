@@ -1,3 +1,10 @@
+## [4.0.4](https://github.com/alevnyacow/domain-first-handlers/compare/v4.0.3...v4.0.4) (2026-08-15)
+
+
+### Bug Fixes
+
+* **README:** added semantic release badge ([5c1ccae](https://github.com/alevnyacow/domain-first-handlers/commit/5c1ccaef51a1c410c2bb604964e8c21bd6d33b6b))
+
 ## [4.0.3](https://github.com/alevnyacow/domain-first-handlers/compare/v4.0.2...v4.0.3) (2026-08-14)
 
 
