@@ -84,9 +84,22 @@ export const defineHandler = <
         ) => ParsedOutput | Promise<ParsedOutput>;
     }) => {
         return async (...input: ParsedInput) => {
-            const requiredInput = await transformers.input(...input);
-            const output = await handlerFunction(requiredInput);
-            return await transformers.output(output, ...input);
+            try {
+                const requiredInput = await transformers.input(...input);
+                const output = await handlerFunction(requiredInput);
+                return await transformers.output(output, ...input);
+            } catch (e: unknown) {
+                return await transformers.output(
+                    {
+                        error:
+                            e instanceof Error
+                                ? e
+                                : new Error(JSON.stringify(e)),
+                        success: false
+                    },
+                    ...input
+                );
+            }
         };
     };
 
