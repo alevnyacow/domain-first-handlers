@@ -1,3 +1,10 @@
+# [4.1.0](https://github.com/alevnyacow/domain-first-handlers/compare/v4.0.4...v4.1.0) (2026-08-28)
+
+
+### Features
+
+* `withTransformedContract` tries to work after exception ([cee9edc](https://github.com/alevnyacow/domain-first-handlers/commit/cee9edc8065fb7dd96918ec1986c762ba2668a37))
+
 ## [4.0.4](https://github.com/alevnyacow/domain-first-handlers/compare/v4.0.3...v4.0.4) (2026-08-15)
 
 
