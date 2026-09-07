@@ -1,3 +1,16 @@
+# [5.0.0](https://github.com/alevnyacow/domain-first-handlers/compare/v4.1.0...v5.0.0) (2026-09-07)
+
+
+### Features
+
+* hooks ([6096dff](https://github.com/alevnyacow/domain-first-handlers/commit/6096dff91f8b7486e648f992c59b58ed982909f7))
+
+
+### BREAKING CHANGES
+
+* removed `NonErrorException`, just casting to `Error` if
+exception is not an instance of `Error` class
+
 # [4.1.0](https://github.com/alevnyacow/domain-first-handlers/compare/v4.0.4...v4.1.0) (2026-08-28)
 
 
