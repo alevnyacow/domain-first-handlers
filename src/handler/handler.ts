@@ -132,11 +132,22 @@ export const defineHandler = <
             try {
                 const requiredInput = await transformers.input(...input);
                 const output = await handlerFunction(requiredInput);
+                const transformHooksWithErrors =
+                    additionalHooks?.transformedHandler?.filter(
+                        (x) => x.onError
+                    ) ?? [];
                 for (const hook of additionalHooks?.handler ?? []) {
                     try {
                         if (output.success && hook.onSuccess) {
                             await hook.onSuccess(requiredInput, output.result);
                         }
+                        if (!output.success && hook.onError) {
+                            await hook.onError(output.error);
+                        }
+                    } catch {}
+                }
+                for (const hook of transformHooksWithErrors) {
+                    try {
                         if (!output.success && hook.onError) {
                             await hook.onError(output.error);
                         }
