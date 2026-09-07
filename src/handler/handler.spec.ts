@@ -10,7 +10,7 @@ describe('sum positive numbers', () => {
             b: z.number().positive()
         }),
         outputSchema: z.number(),
-        handler: async ({ a, b }) => a + b
+        handler: async ({ a, b }) => a + b,
     });
 
     describe('with both valid parameters', () => {

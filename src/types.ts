@@ -4,6 +4,11 @@ export type HandlerOutput<T> =
     | { success: true; result: T }
     | { success: false; error: Error };
 
+export type Hook<Parameters, Result> = {
+    onError?: (e: Error) => void | Promise<void>;
+    onSuccess?: (input: Parameters, result: Result) => void | Promise<void>;
+};
+
 export interface Handler<
     InputSchema extends StandardSchemaV1,
     OutputSchema extends StandardSchemaV1
