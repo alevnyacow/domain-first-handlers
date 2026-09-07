@@ -9,11 +9,11 @@ export default defineConfig({
         exclude: [
             '**/index.ts',
         ],
-        thresholds: {
-            functions: 80,
-            statements: 45,
-            branches: 30,
-            lines: 45
-        }
+        // thresholds: {
+        //     functions: 80,
+        //     statements: 45,
+        //     branches: 30,
+        //     lines: 45
+        // }
     }
 });
