@@ -1,3 +1,10 @@
+## [5.0.2](https://github.com/alevnyacow/domain-first-handlers/compare/v5.0.1...v5.0.2) (2026-09-07)
+
+
+### Bug Fixes
+
+* error additional hooks call ([856f8c8](https://github.com/alevnyacow/domain-first-handlers/commit/856f8c8c7a29f3628be906a1be5610808d716f50))
+
 ## [5.0.1](https://github.com/alevnyacow/domain-first-handlers/compare/v5.0.0...v5.0.1) (2026-09-07)
 
 
