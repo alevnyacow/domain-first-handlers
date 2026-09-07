@@ -1,3 +1,10 @@
+## [5.0.1](https://github.com/alevnyacow/domain-first-handlers/compare/v5.0.0...v5.0.1) (2026-09-07)
+
+
+### Bug Fixes
+
+* updated `Handler` type ([81c5e1f](https://github.com/alevnyacow/domain-first-handlers/commit/81c5e1fe9c0aae981d9737adcf739d78f0a6fb5d))
+
 # [5.0.0](https://github.com/alevnyacow/domain-first-handlers/compare/v4.1.0...v5.0.0) (2026-09-07)
 
 
