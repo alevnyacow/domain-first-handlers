@@ -1,7 +1,7 @@
 {
     "name": "@domain-first/handlers",
     "description": "Framework-agnostic application handlers",
-    "version": "5.0.2",
+    "version": "5.0.3",
     "license": "MIT",
     "keywords": [
         "handler",

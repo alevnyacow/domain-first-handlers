@@ -1,3 +1,10 @@
+## [5.0.3](https://github.com/alevnyacow/domain-first-handlers/compare/v5.0.2...v5.0.3) (2026-09-13)
+
+
+### Bug Fixes
+
+* extracted HandlerLogic type ([d327574](https://github.com/alevnyacow/domain-first-handlers/commit/d327574986e990c91311caa226e1aa32067b723f))
+
 ## [5.0.2](https://github.com/alevnyacow/domain-first-handlers/compare/v5.0.1...v5.0.2) (2026-09-07)
 
 
