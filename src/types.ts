@@ -12,6 +12,13 @@ export type Hook<Parameters, Result> = {
     onSuccess?: (input: Parameters, result: Result) => void | Promise<void>;
 };
 
+export type HandlerLogic<
+    InputSchema extends StandardSchemaV1,
+    OutputSchema extends StandardSchemaV1
+> = (
+    input: StandardSchemaV1.InferInput<InputSchema>
+) => Promise<HandlerOutput<StandardSchemaV1.InferOutput<OutputSchema>>>;
+
 export interface Handler<
     InputSchema extends StandardSchemaV1,
     OutputSchema extends StandardSchemaV1
