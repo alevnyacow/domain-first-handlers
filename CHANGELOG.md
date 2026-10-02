@@ -1,3 +1,10 @@
+## [5.0.4](https://github.com/alevnyacow/domain-first-handlers/compare/v5.0.3...v5.0.4) (2026-10-02)
+
+
+### Bug Fixes
+
+* `onSuccess` hook parameter, readme ([e4c1a70](https://github.com/alevnyacow/domain-first-handlers/commit/e4c1a70ec38ea7eaeab24bbf431d0c4eecb2afe5))
+
 ## [5.0.3](https://github.com/alevnyacow/domain-first-handlers/compare/v5.0.2...v5.0.3) (2026-09-13)
 
 
