@@ -10,7 +10,7 @@ describe('sum positive numbers', () => {
             b: z.number().positive()
         }),
         outputSchema: z.number(),
-        handler: async ({ a, b }) => a + b,
+        handler: async ({ a, b }) => a + b
     });
 
     describe('with both valid parameters', () => {
@@ -100,5 +100,27 @@ describe('sum positive numbers', () => {
                 ).rejects.toThrowError(InputParsingError);
             });
         });
+    });
+});
+
+describe('hooks', () => {
+    test('onSuccess receives parsed input value and result', async () => {
+        const calls: unknown[][] = [];
+        const handler = defineHandler({
+            inputSchema: z.object({ a: z.number(), b: z.number() }),
+            outputSchema: z.number(),
+            handler: async ({ a, b }) => a + b,
+            hooks: [
+                {
+                    onSuccess: (input, result) => {
+                        calls.push([input, result]);
+                    }
+                }
+            ]
+        });
+
+        await handler({ a: 1, b: 2 });
+
+        expect(calls).toEqual([[{ a: 1, b: 2 }, 3]]);
     });
 });

@@ -73,7 +73,7 @@ export const defineHandler = <
             for (const hook of hooks ?? []) {
                 if (hook.onSuccess) {
                     try {
-                        await hook.onSuccess(parsedInput, parsedResult.value);
+                        await hook.onSuccess(parsedInput.value, parsedResult.value);
                     } catch {}
                 }
             }
